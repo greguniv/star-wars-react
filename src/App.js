@@ -8,7 +8,6 @@ function App() {
   
   return (
     <div className="App">
-
       <header>Star Wars Starships</header>
 
       <SwApi />

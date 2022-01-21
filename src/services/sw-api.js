@@ -3,16 +3,16 @@ import axios from 'axios'
 
 const SwApi = () => {
 
-    const [ships, setShips] = useState('')
+    const [ships, setShips] = useState([])
 
     const fetchShips = async () => {
- 
+
         try {
-            const res = await 
-            axios.get('https://swapi.dev/api/starships/')
+            const res = await
+                axios.get('https://swapi.dev/api/starships/')
 
             setShips(res.data.results)
-            // console.log(res.data.results)
+            // console.log(ships)
         } catch (error) {
             console.error(error)
         }
@@ -24,24 +24,17 @@ const SwApi = () => {
 
 
     return (
-        <div>
-            <div className="card bg-dark text-white">
-                {/* {arrShips.map((item) => {
+        <div className='main-container'>
+            {
+                ships.map((ship) => {
                     return (
-                        <SwApi item={item} />
+                        <div className="card bg-dark text-white">
+                            <div className="title-card" key={ship?.name}>
+                                <h5 className="card-title">{ship.name}</h5>
+                            </div>
+                        </div>
                     )
                 })
-            } */}
-                <img src="..." className="card-img" alt="..." />
-                <div className="card-img-overlay">
-                    <h5 className="card-title">{ships.name}</h5>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p className="card-text">Last updated 3 mins ago</p>
-                </div>
-            </div>
-
-            {
-                <p>{console.log(ships)}</p>
             }
         </div>
     );
